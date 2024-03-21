@@ -5,7 +5,7 @@ local love = require "love"
 
 local mainmenu  = require "mainmenu"
 local gameboard = require "gameboard"
-local owners = {"cpu","player","3","4","5","6","7","8","9"}
+local owners = {}
 
 local state = "menu"
 love.graphics.setDefaultFilter('nearest', 'nearest')

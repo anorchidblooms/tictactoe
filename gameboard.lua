@@ -62,13 +62,13 @@ local function getcenterpoints(width, height)
     return results
 end
 
-game.cpucolor = function()
+local function cpucolor()
     love.graphics.setColor(0, 1, 0)
 end
-game.playercolor = function()
+local function playercolor()
     love.graphics.setColor(1, 0, 0)
 end
-game.menucolor = function()
+local function menucolor()
     love.graphics.setColor(1, 1, 1)
 end
 
@@ -76,31 +76,8 @@ game.draw = function(width, height, owners)
     drawlines(width, height)
     print("BEGIN DRAWING")
     local positions = getcenterpoints(width, height)
-    for k, v in pairs(owners) do
-        print(string.format("k:: %d v:: %s", k, v))
-        if v == "player" then print ("v is player") end
-        if v ~= "player" or v ~= "cpu" then
-            love.graphics.printf(
-                v,
-                love.graphics.getFont(),
-                positions[k][1],
-                positions[k][2],
-                width / 3,
-                "center",
-                0, 1, 1,
-                (width / 3 / 2),
-                love.graphics.getFont():getHeight(v) / 2
-            )
-        end
-        if v == "player" then
-            game.playercolor()
-        else
-            game.cpucolor()
-        end
-        love.graphics.circle("fill", positions[k][1], positions[k][2], width / 6 * 0.85)
+    for v in pairs(owners) do
     end
-    -- placeallpieces(getcenterpoints(width, height), width/6*0.85)
 end
-
 
 return game
